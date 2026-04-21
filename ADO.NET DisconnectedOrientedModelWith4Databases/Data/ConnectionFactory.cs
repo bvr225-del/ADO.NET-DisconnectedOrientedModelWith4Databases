@@ -22,6 +22,13 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Data
             SqlConnection con=new SqlConnection(connectionString);
             return con;
         }
+        public SqlConnection Midland1SqlConnectionString()
+        {
+            var connectionString = Convert.ToString(_configuration.GetSection("ConnectionStrings:Midland1SqlConnectionString").Value);
+            SqlConnection con=new SqlConnection( connectionString);
+            return con;
+        }
+
 
     }
 }
