@@ -1,0 +1,6 @@
+@ADO.NET_DisconnectedOrientedModelWith4Databases_HostAddress = http://localhost:5212
+
+GET {{ADO.NET_DisconnectedOrientedModelWith4Databases_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
