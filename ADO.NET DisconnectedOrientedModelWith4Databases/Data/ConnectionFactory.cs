@@ -1,4 +1,5 @@
 ﻿using ADO.NET_DisconnectedOrientedModelWith4Databases.Interfaces;
+using ADO.NET_DisconnectedOrientedModelWith4Databases.Utils;
 using Microsoft.Data.SqlClient;
 
 namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Data
@@ -18,10 +19,17 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Data
         }
         public SqlConnection Hotelmanagement1SqlConnectionString()
         {
-            var connectionString=Convert.ToString(_configuration.GetSection("ConnectionStrings:Hotelmanagement1SqlConnectionString").Value);
+            var connectionString=Convert.ToString(_configuration.GetSection(ConnectionStringNames.Hotelmanagement1_DBConnectionstringname).Value);
             SqlConnection con=new SqlConnection(connectionString);
             return con;
         }
+        public SqlConnection Midland1SqlConnectionString()
+        {
+            var connectionString = Convert.ToString(_configuration.GetSection(ConnectionStringNames.Midland1_DBConnectionstringname).Value);
+            SqlConnection con=new SqlConnection( connectionString);
+            return con;
+        }
+
 
     }
 }
