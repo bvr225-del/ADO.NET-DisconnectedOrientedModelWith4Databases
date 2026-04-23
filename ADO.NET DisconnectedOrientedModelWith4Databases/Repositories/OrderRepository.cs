@@ -29,7 +29,7 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
                 cmd.Parameters.Add(outputParam);//need to add output parameter to sqlcommand object.this is the rule.
                 SqlDataAdapter da= new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds,"Orders");
+                da.Fill(ds,ClassNames.Orders);
                 var ordersCount = (int)cmd.Parameters[StoredProcedureParameters.insertedVariable].Value;
                 return ordersCount;
             }
@@ -60,12 +60,12 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
                 cmd.Parameters.AddWithValue(StoredProcedureParameters.orderId, orderId);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds, "Orders");
-                foreach(DataRow row in ds.Tables["Orders"].Rows)
+                da.Fill(ds, ClassNames.Orders);
+                foreach(DataRow row in ds.Tables[ClassNames.Orders].Rows)
                 {
-                    ord.orderId = Convert.ToInt16(row["orderId"]);
-                    ord.orderName = Convert.ToString(row["orderName"]);
-                    ord.orderLocation = Convert.ToString(row["orderLocation"]);
+                    ord.orderId = Convert.ToInt16(row[StoredProcedureParameters.orderId]);
+                    ord.orderName = Convert.ToString(row[StoredProcedureParameters.orderName]);
+                    ord.orderLocation = Convert.ToString(row[StoredProcedureParameters.orderLocation]);
                 }
             }
             return ord;
@@ -81,13 +81,13 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds, "Orders");
-                foreach(DataRow row in ds.Tables["Orders"].Rows)
+                da.Fill(ds, ClassNames.Orders);
+                foreach(DataRow row in ds.Tables[ClassNames.Orders].Rows)
                 {
                     Orders ord = new Orders();
-                    ord.orderId = Convert.ToInt16(row["orderId"]);
-                    ord.orderName = Convert.ToString(row["orderName"]);
-                    ord.orderLocation = Convert.ToString(row["orderLocation"]);
+                    ord.orderId = Convert.ToInt16(row[StoredProcedureParameters.orderId]);
+                    ord.orderName = Convert.ToString(row[StoredProcedureParameters.orderName]);
+                    ord.orderLocation = Convert.ToString(row[StoredProcedureParameters.orderLocation]);
                     lstord.Add(ord);
                 }
                 return lstord;
@@ -105,7 +105,7 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
                 cmd.Parameters.AddWithValue(StoredProcedureParameters.orderLocation, orderdetail.orderLocation);
                 SqlDataAdapter da=new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds,"Orders");
+                da.Fill(ds,ClassNames.Orders);
                 return true;
             }
         }

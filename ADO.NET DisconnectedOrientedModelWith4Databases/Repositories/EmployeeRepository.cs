@@ -28,7 +28,7 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
 
                 SqlDataAdapter da=new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds,"Employee");
+                da.Fill(ds,ClassNames.Employee);
                 var employeeCount = (int)cmd.Parameters[StoredProcedureParameters.Insertedvariable].Value;
                 return employeeCount;
             }
@@ -58,12 +58,12 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
                 cmd.Parameters.AddWithValue(StoredProcedureParameters.EmployeeId, empId);
                 SqlDataAdapter da= new SqlDataAdapter( cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds,"Employee");
-                foreach(DataRow row in ds.Tables["Employee"].Rows)
+                da.Fill(ds,ClassNames.Employee);
+                foreach(DataRow row in ds.Tables[ClassNames.Employee].Rows)
                 {
-                    emp.empId = Convert.ToInt16(row["empId"]);
-                    emp.empName = Convert.ToString(row["empName"]);
-                    emp.empSalary = Convert.ToInt16(row["empSalary"]);
+                    emp.empId = Convert.ToInt16(row[StoredProcedureParameters.EmployeeId]);
+                    emp.empName = Convert.ToString(row[StoredProcedureParameters.EmployeeName]);
+                    emp.empSalary = Convert.ToInt16(row[StoredProcedureParameters.EmployeeSalary]);
 
                 }
 
@@ -80,13 +80,13 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataAdapter da=new SqlDataAdapter( cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds, "Employee");
-                foreach(DataRow row in ds.Tables["Employee"].Rows)
+                da.Fill(ds,ClassNames.Employee);
+                foreach(DataRow row in ds.Tables[ClassNames.Employee].Rows)
                 {
                     Employee emp = new Employee();
-                    emp.empId = Convert.ToInt16(row["empId"]);
-                    emp.empName = Convert.ToString(row["empName"]);
-                    emp.empSalary = Convert.ToInt16(row["empSalary"]);
+                    emp.empId = Convert.ToInt16(row[StoredProcedureParameters.EmployeeId]);
+                    emp.empName = Convert.ToString(row[StoredProcedureParameters.EmployeeName]);
+                    emp.empSalary = Convert.ToInt16(row[StoredProcedureParameters.EmployeeSalary]);
                     listEmployee.Add( emp );
                 }
                 return listEmployee;
@@ -107,7 +107,7 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories
 
                 SqlDataAdapter da= new SqlDataAdapter( cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds, "Employee");
+                da.Fill(ds, ClassNames.Employee);
                 return true;
             }
             return true;
