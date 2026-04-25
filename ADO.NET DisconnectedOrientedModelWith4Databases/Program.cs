@@ -21,6 +21,9 @@ builder.Services.AddScoped<IEmployeeService, EmployeeService>();//register the s
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

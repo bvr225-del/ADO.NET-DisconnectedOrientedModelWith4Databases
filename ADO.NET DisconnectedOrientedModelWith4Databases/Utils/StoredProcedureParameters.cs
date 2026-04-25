@@ -15,5 +15,12 @@
         public static string orderLocation = "orderLocation";
         public static string insertedVariable = "insertvalue";
         #endregion
+
+        #region Department Parameters
+        public static string departmentId = "deptid";
+        public static string departmentName = "deptname";
+        public static string departmentLocation = "deptlocation";
+        public static string departmentInsertedVariable = "insertvalue";
+        #endregion
     }
 }
