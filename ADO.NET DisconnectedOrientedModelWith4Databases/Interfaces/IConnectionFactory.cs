@@ -9,5 +9,6 @@ namespace ADO.NET_DisconnectedOrientedModelWith4Databases.Interfaces
         //INTERFACE AND IMPLEMENT IT IN THE CONNECTION FACTORY CLASS.
         SqlConnection Hotelmanagement1SqlConnectionString();
         SqlConnection Midland1SqlConnectionString();
+        SqlConnection Nortwind_DB1SqlConnectionString();
     }
 }

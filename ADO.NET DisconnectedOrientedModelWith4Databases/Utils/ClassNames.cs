@@ -4,5 +4,6 @@
     {
         public static string Orders = "Orders";
         public static string Employee = "Employee";
+        public static string Department = "Department";
     }
 }
