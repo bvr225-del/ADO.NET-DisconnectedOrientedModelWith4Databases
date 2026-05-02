@@ -3,6 +3,13 @@ using ADO.NET_DisconnectedOrientedModelWith4Databases.Interfaces;
 using ADO.NET_DisconnectedOrientedModelWith4Databases.Repositories;
 using ADO.NET_DisconnectedOrientedModelWith4Databases.Services;
 
+//Program.cs is the entry point of the application Here we are configuring/adding/registering the services and  middlewares to the application.
+//In this file we are adding/registering the services and the repositories in the dependency injection container of the application and then we are building the application and running it.
+//this program.cs is divided into 2 sections.
+//section1:builder is the inbuilt depency injection conatiner.we need to register our all application depencies into our inbuilt depency injection container.
+//this conatiner will load your depencies and then it will inject those depencies to the controller class by using constructor injection and then we can use those depencies in the controller class to perform the required operations.
+
+#region inbuilt dependency injection container section
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -23,7 +30,12 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+#endregion
 
+
+//section2:app is the inbuilt request pipeline,heare we need to register our middlewares to application pipeline.
+
+#region inbuilt request pipelineSection
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,3 +50,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+#endregion
